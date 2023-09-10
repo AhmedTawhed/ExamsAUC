@@ -1,0 +1,92 @@
+﻿
+
+
+
+<div class="sticky-left d-flex align-items-center bg-white p-3 pt-4 px-4 border border-soft shadow-sm rounded">
+	<a target="_blank" asp-controller="ContactUs" asp-action="Index">Contact Us❤️</a>
+</div>
+
+<div class="sticky-right">
+	<a href="#home"
+	   class="icon icon-primary icon-md btn btn-icon-only btn-white border border-soft shadow-soft animate-up-3">
+		<span class="fas fa-chevron-up"></span>
+	</a>
+</div>
+<div class="container">
+	<div class="row justify-content-between">
+		<div class="col-md-4">
+			<p>
+				At our School Exam Website, we are committed to your success. We
+				strive to provide you with the tools, resources, and support you
+				need to achieve your academic goals and excel in your exams.
+			</p>
+			<ul class="social-buttons mb-5 mb-lg-0">
+				<li>
+					<a href="#"
+					   aria-label="twitter social link"
+					   class="icon icon-md icon-twitter mr-3">
+						<span class="fab fa-twitter"></span>
+					</a>
+				</li>
+				<li>
+					<a href="#"
+					   class="icon icon-md icon-facebook mr-3"
+					   aria-label="facebook social link">
+						<span class="fab fa-facebook"></span>
+					</a>
+				</li>
+				<li>
+					<a href="#"
+					   aria-label="github social link"
+					   class="icon icon-md icon-github mr-3">
+						<span class="fab fa-github"></span>
+					</a>
+				</li>
+				<li>
+					<a href="#"
+					   class="icon icon-md icon-dribbble"
+					   aria-label="dribbble social link">
+						<span class="fab fa-dribbble"></span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-6 col-md-2 mb-5 mb-lg-0">
+			<span class="h5">School Exam Website</span>
+			<ul class="footer-links mt-2">
+				<li>
+					<a target="_blank" asp-controller="Home" asp-action="Index">Home</a>
+				</li>
+				<li>
+					<a target="_blank" asp-controller="Home" asp-action="About">About Us</a>
+				</li>
+				<li>
+					<a target="_blank" asp-controller="ContactUs" asp-action="Index">Contact Us</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-12 col-md-4 mb-5 mb-lg-0">
+			<span class="h5 mb-3 d-block">Subscribe</span>
+			<form asp-controller="ContactUs" asp-action="Index">
+				<div class="form-row mb-2">
+					<div class="col-12">
+						<input type="email"
+							   class="form-control mb-2"
+							   placeholder="example@company.com"
+							   name="email"
+							   aria-label="Subscribe form"
+							   required />
+					</div>
+					<div class="col-12">
+						<button asp-controller="ContactUs" asp-action="Index"
+								class="btn btn-dark shadow-soft btn-block"
+								data-loading-text="Sending">
+							<span>Subscribe</span>
+						</button>
+					</div>
+				</div>
+			</form>
+			<p class="text-muted font-small m-0">No spam.</p>
+		</div>
+	</div>
+</div>

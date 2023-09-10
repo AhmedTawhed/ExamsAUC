@@ -1,0 +1,97 @@
+﻿
+@model SignUPUserViewModel
+
+
+@{
+	ViewData["Title"] = "Sign Up";
+}
+<section class="min-vh-100 d-flex align-items-center bg-soft">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-12">
+				<div class="signin-inner mt-3 mt-lg-0 bg-white shadow border rounded border-light w-100">
+					<div class="row gx-0 align-items-center justify-content-between">
+						<div class="col-12 col-lg-5 d-none d-lg-block rounded-left bg-secondary">
+							<img src="~/lib/Scripts-For-template/assets/img/illustrations/login.svg" alt="login image" />
+						</div>
+						<div class="col-12 col-lg-7 px-3 py-5 px-sm-5 px-md-6">
+							<div class="text-center text-md-center mb-4 mt-md-0">
+								<h1 class="mb-0 h3">Sign Up</h1>
+							</div>
+
+							<form method="post" id="mainform">
+								
+
+								<div class="form-group mb-4">
+									<label for="name">Name:</label>
+									<input asp-for="Name" class="form-control" placeholder="Enter Your Name" />
+									<span asp-validation-for="Name" class="text-danger"></span>
+									
+								</div>
+								<div class="form-group mb-4">
+									<label for="Age">Age:</label>
+									<input asp-for="Age" class="form-control" placeholder="Enter Your Age" />
+									<span asp-validation-for="Age" class="text-danger"></span>
+									
+								</div>
+								<div class="form-group mb-4">
+									<label for="Email">Your Email:</label>
+									<input asp-for="Email" class="form-control" placeholder="Enter Your Email" />
+									<span asp-validation-for="Email" class="text-danger"></span>
+								
+								</div>
+								<div class="form-group mb-4">
+									<label for="Password">Password:</label>
+									<input asp-for="Password" rows="5" class="form-control" placeholder="Enter Your Password" /></input>
+									<span asp-validation-for="Password" class="text-danger"></span>
+								</div>
+								<div class="form-group mb-4">
+									<label for="ConfirmPassword">Confirm Password:</label>
+									<input asp-for="ConfirmPassword" rows="5" class="form-control" placeholder="Confirm Your Password" /></input>
+									<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+								</div>
+								<button type="submit" class="btn btn-block btn-primary">
+									Sign up
+								</button>
+
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

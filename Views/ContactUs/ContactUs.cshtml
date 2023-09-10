@@ -1,0 +1,86 @@
+﻿@model ContactUs
+
+@{
+	ViewData["Title"] = "Contact Us";
+}
+<section class="min-vh-100 d-flex align-items-center bg-soft">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-12">
+				<div class="signin-inner mt-3 mt-lg-0 bg-white shadow border rounded border-light w-100">
+					<div class="row gx-0 align-items-center justify-content-between">
+						<div class="col-12 col-lg-5 d-none d-lg-block rounded-left bg-secondary">
+							<img src="~/lib/Scripts-For-template/assets/img/illustrations/login.svg" alt="login image" />
+						</div>
+						<div class="col-12 col-lg-7 px-3 py-5 px-sm-5 px-md-6">
+							<div class="text-center text-md-center mb-4 mt-md-0">
+								<h1 class="mb-0 h3">Contact US</h1>
+							</div>
+
+
+
+							@if (TempData.ContainsKey("SuccessMessage"))
+							{
+								<div class="alert alert-success">
+									@TempData["SuccessMessage"]
+								</div>
+
+								<script>
+									function () {
+										Swal.fire(
+											'Thank You!',
+											'We Will Get Your Message!',
+											'success'
+										)
+									});
+								</script>
+							}
+
+							@if (TempData.ContainsKey("ErrorMessage"))
+							{
+								<div class="alert alert-danger">
+									@TempData["ErrorMessage"]
+								</div>
+							}
+
+
+
+
+							<form method="post" id="mainform" action="\ContactUs">
+
+								<div class="form-group mb-4">
+									<label for="name">Name</label>
+									<input asp-for="name" class="form-control" placeholder="Enter Your Name" />
+									<span asp-validation-for="name" class="text-danger"></span>
+									
+								</div>
+								<div class="form-group mb-4">
+									<label for="Email">Your Email</label>
+									<input asp-for="Email" class="form-control" placeholder="Enter Your Email" />
+									<span asp-validation-for="Email" class="text-danger"></span>
+								</div>
+								
+								<div class="form-group mb-4">
+									<label for="message">Message:</label>
+									<textarea asp-for="Message" rows="5" class="form-control" placeholder="Enter Your Message here" /></textarea>
+									<span asp-validation-for="Message" class="text-danger"></span>
+								</div>
+							
+
+								<button onclick="" id="frmbtn" class="btn btn-block btn-primary">
+									Send
+								</button>
+
+							</form>
+
+
+							
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

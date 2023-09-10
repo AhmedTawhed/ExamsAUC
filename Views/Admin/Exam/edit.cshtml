@@ -1,0 +1,60 @@
+﻿@model Exam
+
+@{
+    ViewData["Title"] = "Edit Exam";
+    Layout = "~/Views/Admin/Shared/_AdminLayout.cshtml";
+    ViewData["activeLink"] = "exams";
+    int counter = 1;
+}
+
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" style="background:#FFF;">
+
+<div id="kt_content_container" class="container-xxl">
+    <form asp-action="Edit" asp-controller="Exam" method="POST">
+        @Html.AntiForgeryToken()
+        <div class="d-flex flex-column mb-7 fv-row mt-4">
+            <label class="fs-6 fw-bold mb-2">Exam Title</label>
+            <input type="text" class="form-control form-control-solid mt-3" required placeholder="Exam Title" asp-for="Name">
+        </div>
+        <div class="form-group row mt-5">
+            <div class="d-flex flex-column mb-7 fv-row mt-4">
+                <div class="question-group">
+                    @for (int i = 0; i < Model.ExamQuestions.Count; i++)
+                    {
+                        var question = Model.ExamQuestions[i];
+                        <div class="question-parent mb-4 pb-5">
+                            <label class="fs-6 fw-bold mb-2">Question @(i + 1)</label>
+                            <input type="hidden" name="ExamQuestions[@i].Id" value="@question.Id" />
+                            <input type="text" class="form-control form-control-solid mt-3" placeholder="Enter Question Title" required name="ExamQuestions[@i].Title" value="@question.Title">
+                            @for (int j = 0; j < question.Options.Count; j++)
+                            {
+                                var option = question.Options[j];
+                                <div id="question-inputs">
+                                    <input type="hidden" name="ExamQuestions[@i].Options[@j].Id" value="@option.Id" />
+                                    <div class="d-flex align-items-center mb-3">
+                                        <input class="form-check-input me-2" type="radio" value="@option.Id" name="ExamQuestions[@i].CorrectOptionId" required @(option.IsRight ? "checked" : "") />
+                                        <input type="text" class="form-control form-control-solid mt-3" placeholder="Option Title" name="ExamQuestions[@i].Options[@j].Title" required value="@option.Title">
+                                        <input type="hidden" name="ExamQuestions[@i].Options[@j].IsRight" value="@option.IsRight" />
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="text-center pt-15">
+            <button type="submit" id="kt_modal_new_card_submit" class="btn btn-primary">
+                <span class="indicator-label">Save Changes</span>
+                <span class="indicator-progress">
+                    Please wait...
+                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                </span>
+            </button>
+        </div>
+        <input type="text" id="counter" hidden asp-for="QuestionCount" />
+    </form>
+
+</div>
+</div>

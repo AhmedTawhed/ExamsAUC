@@ -1,0 +1,84 @@
+﻿
+
+
+
+
+
+<nav id="navbar-main" aria-label="Primary navigation"
+	 class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom navbar-light navbar-theme-secondary">
+	<div class="container position-relative">
+		<a class="navbar-brand mr-lg-4" asp-controller="Home" asp-action="Index">
+			<img class="navbar-brand-dark"
+				 src="~/lib/Scripts-For-Template/assets/img/light.svg"
+				 alt="Logo light" />
+			<img class="navbar-brand-light"
+				 src="~/lib/Scripts-For-Template/assets/img/dark.svg"
+				 alt="Logo dark" />
+		</a>
+		<div class="navbar-collapse collapse mr-auto" id="navbar_global">
+			<div class="navbar-collapse-header">
+				<div class="row">
+					<div class="col-6 collapse-brand">
+						<a asp-controller="Home" asp-action="Index">
+							<img src="~/lib/Scripts-For-Template/assets/img/dark.svg" alt="Logo dark" />
+						</a>
+					</div>
+					<div class="col-6 collapse-close">
+						<a href="#navbar_global"
+						   class="fas fa-times"
+						   data-toggle="collapse"
+						   data-target="#navbar_global"
+						   aria-controls="navbar_global"
+						   aria-expanded="false"
+						   title="close"
+						   aria-label="Toggle navigation"></a>
+					</div>
+				</div>
+			</div>
+
+			<ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+				<li class="nav-item">
+					<a asp-controller="Home" asp-action="Index" class="nav-link"> Home </a>
+				</li>
+				@if (User.IsInRole("user"))
+				{
+					<li class="nav-item">
+						<a asp-area="" asp-controller="Stud" asp-action="ChooseExam" class="nav-link"> Take Exam </a>
+					</li>
+				}
+				<li class="nav-item">
+					<a asp-controller="ContactUs" asp-action="Index" class="nav-link"> Contact Us </a>
+				</li>
+				<li class="nav-item">
+					<a asp-controller="Home" asp-action="About" class="nav-link"> About Us </a>
+				</li>
+			</ul>
+
+			<ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+
+
+				@if (!User.Identity.IsAuthenticated)
+				{
+					<li class="nav-item">
+						<a asp-controller="UsersSignIn" asp-action="Sign_In" class="nav-link"> Login </a>
+					</li>
+					<li class="nav-item">
+						<a asp-controller="UsersSignIn" asp-action="Sign_Up" class="nav-link"> Sign Up </a>
+					</li>
+				}
+				@if (User.Identity.IsAuthenticated)
+				{
+					<li class="nav-item">
+						<a asp-controller="UsersSignIn" asp-action="Logout" class="nav-link"> Log Out </a>
+					</li>
+					<li class="bg-success text-white rounded p-2  pointer-events-none user-select-none">
+						<span><b>Welcome @User.Identity.Name</b></span>
+					</li>	
+				}
+
+				
+
+			</ul>
+		</div>
+	</div>
+</nav>

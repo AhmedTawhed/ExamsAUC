@@ -1,0 +1,257 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+
+<section class="section section-header text-dark pb-md-8">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-10 text-center mb-5 mb-md-7">
+				<h1 class="display-2 font-weight-bolder mb-4">
+					School Exam Website
+				</h1>
+				<p class="lead mb-4 mb-lg-5">
+					At our School Exam Website, we are committed to your success. We
+					strive to provide you with the tools, resources, and support you
+					need to achieve your academic goals and excel in your exams. Let
+					us be your trusted companion on your educational journey,
+					helping you unlock your full potential and achieve remarkable
+					results.
+				</p>
+				@if (User.IsInRole("user"))
+				{
+					<div>
+						<a asp-action="ChooseExam" asp-controller="Stud"
+						   class="btn btn-dark mt-3 animate-up-2">
+							Take The Exam
+							<span class="icon icon-xs ml-2">
+								<i  class="fas fa-external-link-alt"></i>
+							</span>
+						</a>
+					</div>
+				}
+				
+			</div>
+			<div class="col-12 col-md-10 justify-content-center">
+				<img class="d-none d-md-inline-block"
+					 src="~/lib/Scripts-For-Template/assets/img/illustrations/scene.svg"
+					 alt="Mobile App Mockup" />
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section section-lg py-0">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+				<div class="card border-0 bg-white text-center p-1">
+					<div class="card-header bg-white border-0 pb-0">
+						<div class="icon icon-lg icon-primary mb-4">
+							<span class="fas fa-money-bill-wave"></span>
+						</div>
+						<h2 class="h3 text-dark m-0">User Friendly</h2>
+					</div>
+					<div class="card-body">
+						<p>
+							Our user-friendly interface allows you to navigate
+							effortlessly through various topics and subjects.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+				<div class="card border-0 bg-white text-center p-1">
+					<div class="card-header bg-white border-0 pb-0">
+						<div class="icon icon-lg icon-primary mb-4">
+							<span class="fas fa-map-marked-alt"></span>
+						</div>
+						<h2 class="h3 text-dark m-0">Collection of Practice Tests</h2>
+					</div>
+					<div class="card-body">
+						<p>
+							hese tests are designed to simulate the real exam
+							experience, helping you gauge your knowledge and identify
+							areas that require further attention.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-4">
+				<div class="card border-0 bg-white text-center p-1">
+					<div class="card-header bg-white border-0 pb-0">
+						<div class="icon icon-lg icon-primary mb-4">
+							<span class="fas fa-shopping-basket"></span>
+						</div>
+						<h2 class="h3 text-dark m-0">
+							Wide Range of Valuable Study Materials
+						</h2>
+					</div>
+					<div class="card-body">
+						<p>
+							Whether you're studying for math, science, history,
+							literature, or any other subject, our website provides
+							comprehensive coverage to meet your academic needs.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="col-12 col-lg-12 text-center">
+	<h2 class="h1 mb-4">Current Subjects List</h2>
+	<p class="lead">Here is our current list of Subjects.</p>
+</div>
+
+<div class="container row mx-auto">
+	<div class="card mb-3 m-3" style="max-width: 340px">
+		<div class="row no-gutters">
+			<div class="col-md-4">
+				<img src="~/lib/Scripts-For-Template/assets/img/english.jpg" class="card-img" alt="..." />
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+					<h5 class="card-title">English</h5>
+					<p class="card-text">
+						Focusing on language skills and communication.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="card mb-3 m-3" style="max-width: 340px">
+		<div class="row no-gutters">
+			<div class="col-md-4">
+				<img src="~/lib/Scripts-For-Template/assets/img/maths.jpg" class="card-img" alt="..." />
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+					<h5 class="card-title">Mathematics</h5>
+					<p class="card-text">
+						Focusing on numbers, shapes, and patterns.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="card mb-3 m-3" style="max-width: 340px">
+		<div class="row no-gutters">
+			<div class="col-md-4">
+				<img src="~/lib/Scripts-For-Template/assets/img/scince.jpg" class="card-img" alt="..." />
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+					<h5 class="card-title">Science</h5>
+					<p class="card-text">
+						Focusing on biology, chemistry and physics.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="col-12 col-lg-12 text-center">
+	<h2 class="h1 mb-4">Meet The Staff</h2>
+	<p class="lead">Allow us to introduce our esteemed educators.</p>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="card m-1" style="width: 18rem">
+			<img src="~/lib/Scripts-For-Template/assets/img/male.jpg"
+				 style="height: 250px"
+				 class="card-img-top"
+				 alt="Male Picture" />
+			<div class="card-body">
+				<h5 class="card-title">Mr. John Anderson</h5>
+				<p class="card-text">
+					Experienced educator with a passion for literature and language
+					arts.
+				</p>
+				<a href="#" class="btn btn-primary">Details</a>
+			</div>
+		</div>
+		<div class="card m-1" style="width: 18rem">
+			<img src="~/lib/Scripts-For-Template/assets/img/female.jpg"
+				 style="height: 250px"
+				 class="card-img-top"
+				 alt="Male Picture" />
+			<div class="card-body">
+				<h5 class="card-title">Dr. Sarah Thompson</h5>
+				<p class="card-text">
+					Ph.D. in Mathematics and has been teaching for over 10 years.
+				</p>
+				<a href="#" class="btn btn-primary">Details</a>
+			</div>
+		</div>
+		<div class="card m-1" style="width: 18rem">
+			<img src="~/lib/Scripts-For-Template/assets/img/male2.jpg"
+				 style="height: 250px"
+				 class="card-img-top"
+				 alt="Male Picture" />
+			<div class="card-body">
+				<h5 class="card-title">Mr. Michael Ramirez</h5>
+				<p class="card-text">
+					highly experienced and passionate educator specializing in
+					science education.
+				</p>
+				<a href="#" class="btn btn-primary">Details</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<section class="section section-lg" id="about">
+	<div class="container">
+		<div class="row justify-content-center mb-5 mb-lg-7">
+			<div class="col-12 col-lg-8 text-center">
+				<h2 class="h1 mb-4">Better in every way</h2>
+				<p class="lead">
+					That's why we have created a platform specifically designed to
+					help students like you prepare effectively and confidently for
+					your school exams.
+				</p>
+			</div>
+		</div>
+		<div class="row row-grid align-items-center mb-5 mb-lg-7">
+			<div class="col-12 col-lg-5">
+				<h2 class="mb-4">SIGN UP NOW!</h2>
+				<p>
+					What are you waiting for? Sign up now and take your first test!
+				</p>
+				<a asp-controller="UsersSignIn" asp-action="Sign_Up" class="btn btn-dark mt-3 animate-up-2">
+					Sign Up
+					<span class="icon icon-xs ml-2">
+						<i class="fas fa-external-link-alt"></i>
+					</span>
+				</a>
+			</div>
+			<div class="col-12 col-lg-6 ml-lg-auto">
+				<img src="~/lib/Scripts-For-Template/assets/img/illustrations/scene-3.svg"
+					 class="w-100"
+					 alt="" />
+			</div>
+		</div>
+		<div class="row row-grid align-items-center mb-5 mb-lg-7">
+			<div class="col-12 col-lg-5 order-lg-2">
+				<h2 class="mb-4">Got Questions?</h2>
+				<p>Don't hesitate to reach out!</p>
+				<a asp-controller="ContactUs" asp-action="Index" class="btn btn-dark mt-3 animate-up-2">
+					Contact Us
+					<span class="icon icon-xs ml-2">
+						<i class="fas fa-external-link-alt"></i>
+					</span>
+				</a>
+			</div>
+			<div class="col-12 col-lg-6 mr-lg-auto">
+				<img src="~/lib/Scripts-For-Template/assets/img/illustrations/scene-2.svg"
+					 class="w-100"
+					 alt="" />
+			</div>
+		</div>
+	</div>
+</section>

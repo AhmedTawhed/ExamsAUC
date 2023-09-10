@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<title>@ViewData["Title"] - MVCExamProject</title>
+
+
+	<link type="text/css" href="~/lib/Scripts-For-Template/css/swipe.css" rel="stylesheet" />
+	<link rel="stylesheet" href="~/css/sweetalert2.css" />
+
+</head>
+<body>
+	<header class="header-global" id="home">
+		<partial name="_NavbarPartial" />
+	</header>
+	<br />
+	<br />
+	<br />
+
+
+	<main>
+		@RenderBody()
+	</main>
+
+
+	<br />
+	<br />
+	<footer class="footer py-5 pt-lg-6">
+		<partial name="_FooterPartial" />
+	</footer>
+
+
+
+
+	
+
+
+	<script src="~/lib/Scripts-For-Template/vendor/popper.js/dist/umd/popper.min.js"></script>
+	<script src="~/lib/Scripts-For-Template/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="~/lib/Scripts-For-Template/vendor/headroom.js/dist/headroom.min.js"></script>
+
+	<script src="~/lib/Scripts-For-Template/vendor/onscreen/dist/on-screen.umd.min.js"></script>
+	<script src="~/lib/Scripts-For-Template/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+	<script src="~/lib/Scripts-For-Template/assets/js/swipe.js"></script>
+
+	<script src="~/js/sweetalert2.js"></script>
+
+	<script src="~/js/site.js" asp-append-version="true"></script>
+
+	
+	@await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

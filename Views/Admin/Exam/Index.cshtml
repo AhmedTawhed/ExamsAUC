@@ -1,0 +1,158 @@
+﻿@model List<Exam>
+
+@{
+    ViewData["Title"] = "Exams";
+    Layout = "~/Views/Admin/Shared/_AdminLayout.cshtml";
+    ViewData["activeLink"] = "exams";
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+    <div id="kt_content_container" class="container-xxl">
+
+        <div class="card">
+
+            <div class="card-header border-0 pt-6">
+
+                <div class="card-toolbar d-flex justify-content-between w-100">
+                    <div class="d-flex justify-content-between" data-kt-customer-table-toolbar="base">
+                        <div class="d-flex align-items-center position-relative my-1">
+							<span class="svg-icon svg-icon-1 position-absolute ms-6">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+									<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="black"></rect>
+									<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="black"></path>
+								</svg>
+							</span>
+                            
+							<input id="searchInput" type="text" data-kt-customer-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="Search Exams">
+						   
+                        </div>
+                       
+                    </div>
+                     <a asp-controller="Exam" asp-action="Create" type="button" class="btn btn-primary">
+                            New Exam
+                     </a>
+                </div>
+            </div>
+
+            <div class="card-body pt-0">
+                <div id="kt_customers_table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                    <div class="table-responsive">
+                        <table class="table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer" id="kt_customers_table">
+                            <thead>
+                                <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                    <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" style="width: 125px;" aria-label="Customer Name: activate to sort column ascending">
+                                        Exam Title
+                                    </th>
+                                    <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" style="width: 165.383px;" aria-label="Email: activate to sort column ascending">Number of Questions</th>
+                                    <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" style="width: 125px;" aria-label="Company: activate to sort column ascending">Created at</th>
+                                    <th class="text-end min-w-70px sorting_disabled" rowspan="1" colspan="1" style="width: 79.7px;" aria-label="Actions">Actions</th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody class="fw-bold text-gray-600">
+                                @foreach (var exam in Model)
+                                {
+                                    <tr class="odd">
+                                        <td>@exam.Name</td>
+                                        <td>@exam.QuestionCount</td>
+                                        <td>@exam.createdAt</td>
+
+                                        <td class="text-end">
+                                            <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                                Actions
+                                                <span class="svg-icon svg-icon-5 m-0">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                        <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black"></path>
+                                                    </svg>
+                                                </span>
+                                            </a>
+                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true" style="">
+
+                                                <div class="menu-item px-3">
+                                                    <a href="/admin/exams/@exam.Id/edit">
+                                                        <span class="menu-link px-3 create-new-project-modal">Edit</span>
+                                                    </a>
+                                                    
+                                                </div>
+                                                <div class="delete_project_btn menu-item px-3">
+                                                    <a href="" class="menu-link px-3" data-kt-customer-table-filter="delete_row" data-bs-toggle="modal" data-id="@exam.Id" data-bs-target="#kt_modal_new_card">Delete</a>
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                                
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="kt_modal_new_card" tabindex="-1" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered mw-650px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Delete Exam</h2>
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <span class="svg-icon svg-icon-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black"></rect>
+                            <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black"></rect>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            <form method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework" method="post" asp-action="Delete" asp-controller="Exam">
+                @Html.AntiForgeryToken()
+                <input name="id" hidden id="course-id" class="d-none" />
+                <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                    <div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_customer_header" data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px" style="max-height: 162px;">
+                        <h2 class="text-center text-danger">Are you sure you want to delete this Exam ?</h2>
+                        <div class="form-group row">
+
+
+                            <div class="text-center pt-15">
+                                <button type="reset" id="kt_modal_new_card_cancel" class="btn btn-light me-3">Discard</button>
+                                <button type="submit" class="btn btn-danger">
+                                    <span class="indicator-label">Delete Exam</span>
+                                    <span class="indicator-progress">
+                                        Please wait...
+                                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div><div></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Js{
+    <script src="/js/quicksearch.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("[data-bs-target='#kt_modal_new_card']").on("click", function () {
+                let id = $(this).attr("data-id");
+                $("#course-id").prop("value", id);
+                
+            });
+            $('#searchInput').quicksearch('table tbody tr', {
+	            
+            });
+        });
+    </script>
+}

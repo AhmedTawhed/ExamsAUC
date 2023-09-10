@@ -1,0 +1,120 @@
+﻿@model ExamViewModel
+@{
+    ViewData["Title"] = "Create New Exam";
+    Layout = "~/Views/Admin/Shared/_AdminLayout.cshtml";
+    ViewData["activeLink"] = "exams";
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" style="background:#FFF;">
+    <div id="kt_content_container" class="container-xxl">
+        <form asp-action="Create" asp-controller="Exam" method="POST">
+            @Html.AntiForgeryToken()
+
+            <div class="d-flex flex-column mb-7 fv-row mt-4">
+                <label class="fs-6 fw-bold mb-2">Exam Title</label>
+                <input type="text" class="form-control form-control-solid mt-3" required placeholder="Exam Title" name="Title">
+            </div>
+
+            <div class="form-group row mt-5">
+                <div class="d-flex flex-column mb-7 fv-row mt-4">
+                    <div class="question-group">
+                    </div>
+
+                    <button type="button" class="btn btn-sm btn-secondary mt-3" id="add-new-question">Add New Question</button>
+                </div>
+            </div>
+
+            <div class="text-center pt-15">
+                <button type="submit" id="kt_modal_new_card_submit" class="btn btn-primary">
+                    <span class="indicator-label">Save Changes</span>
+                    <span class="indicator-progress">
+                        Please wait...
+                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                    </span>
+                </button>
+            </div>
+
+            <input type="text" id="counter" hidden asp-for="QuestionsCount" />
+        </form>
+    </div>
+</div>
+
+@section Js{
+    <script>
+        $(document).ready(function () {
+            var QuestionNumber = 0;
+
+            $("#add-new-question").on("click", function () {
+                QuestionNumber++;
+                appendNewQuestion();
+            });
+
+            function appendNewQuestion() {
+                $(".question-group").append(`
+                            <div class="question-parent mb-4 pb-5">
+                                <label class="fs-6 fw-bold mb-2">Question ${QuestionNumber}</label>
+                                <input type="text" class="form-control form-control-solid mt-3" placeholder="Enter Question ${QuestionNumber} Title" value="" required name="Questions[${QuestionNumber}].Title">
+                                <select class="form-select form-control-solid mt-3" name="Questions[${QuestionNumber}].QuestionType" required>
+                                    <option value="MCQ">Multiple Choice (MCQ)</option>
+                                    <option value="TrueFalse">True or False</option>
+                                    <option value="Essay">Essay</option>
+                                    <option value="MissingWord">Complete the Missing Word</option>
+                                </select>
+                                <div id="question-inputs${QuestionNumber}">
+                                </div>
+                            </div>
+                        `);
+
+                $("#counter").val(QuestionNumber);
+            }
+
+            $(document).on("change", "select[name^='Questions[']", function () {
+                var questionNumber = $(this).attr("name").match(/\d+/)[0];
+                var questionType = $(this).val();
+                var questionInputs = "";
+
+                if (questionType === "MCQ") {
+                    questionInputs = `
+                                <div class="d-flex align-items-center mb-3">
+                                    <input class="form-check-input me-2" type="radio" value="1" name="Questions[${questionNumber}].CorrectOption" required/>
+                                    <input type="text" class="form-control form-control-solid mt-3" placeholder="Option one" name="Questions[${questionNumber}].Options[0].Text" required>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <input class="form-check-input me-2" type="radio" value="2" name="Questions[${questionNumber}].CorrectOption" required/>
+                                    <input type="text" class="form-control form-control-solid mt-3" placeholder="Option two" name="Questions[${questionNumber}].Options[1].Text" required>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <input class="form-check-input me-2" type="radio" value="3" name="Questions[${questionNumber}].CorrectOption" required/>
+                                    <input type="text" class="form-control form-control-solid mt-3" placeholder="Option three" name="Questions[${questionNumber}].Options[2].Text" required>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <input class="form-check-input me-2" type="radio" value="4" name="Questions[${questionNumber}].CorrectOption" required/>
+                                    <input type="text" class="form-control form-control-solid mt-3" placeholder="Option four" name="Questions[${questionNumber}].Options[3].Text" required>
+                                </div>
+                            `;
+                } else if (questionType === "TrueFalse") {
+                    questionInputs = `
+                                <div class="d-flex align-items-center mb-3">
+                                    <input class="form-check-input me-2" type="radio" value="true" name="Questions[${questionNumber}].CorrectOption" required/>
+                                    <label class="form-check-label">True</label>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <input class="form-check-input me-2" type="radio" value="false" name="Questions[${questionNumber}].CorrectOption" required/>
+                                    <label class="form-check-label">False</label>
+                                </div>
+                            `;
+                } else if (questionType === "Essay") {
+                    questionInputs = `
+                                <textarea class="form-control form-control-solid mt-3" placeholder="Enter the essay answer" name="Questions[${questionNumber}].Answer" required></textarea>
+                            `;
+                } else if (questionType === "MissingWord") {
+                    questionInputs = `
+                                <input type="text" class="form-control form-control-solid mt-3" placeholder="Enter the missing word" name="Questions[${questionNumber}].Answer" required>
+                            `;
+                }
+
+                $(`#question-inputs${questionNumber}`).html(questionInputs);
+            });
+        });
+    </script>
+}
