@@ -40,8 +40,6 @@ namespace MVCExamProject.Controllers
         [HttpPost]
         public IActionResult Result(List<int> optionsId,List<string> answers,int examId)
         {
-            
-           
             int count = 0;
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             UserExam userExam = new UserExam();

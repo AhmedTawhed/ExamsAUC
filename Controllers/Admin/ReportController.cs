@@ -48,7 +48,5 @@ namespace MVCExamProject.Controllers.Admin
             return View("~/Views/Admin/Report/index.cshtml", result);
         }
 
-
-
     }
 }

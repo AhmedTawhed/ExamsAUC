@@ -53,16 +53,6 @@ namespace MVCExamProject.Repository
             return context.Users.Where(n=>n.Name.Contains(name)).ToList(); 
         } 
 
-    
-
-
-
-
-
-
-
-
-
         public void Delete(User t)
         {
             context.Users.Remove(t);

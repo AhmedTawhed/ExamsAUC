@@ -48,7 +48,6 @@ namespace MVCExamProject.Controllers.Admin
             return View("~/Views/Admin/Student/index.cshtml");
         }
 
-        //search
         public IActionResult searchName(string name) { 
             var result = _userRepository.searchByName(name).Where(u => u.IsAdmin == false).ToList();
             return View("~/Views/Admin/Student/index.cshtml", result);

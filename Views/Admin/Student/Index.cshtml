@@ -1,5 +1,4 @@
-﻿
-@model List<User>
+﻿@model List<User>
 @{
     ViewData["Title"] = "Students";
     Layout = "~/Views/Admin/Shared/_AdminLayout.cshtml";
@@ -58,7 +57,7 @@
 
                                     <tr class="odd">
                                         <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                                        <td> @Html.DisplayFor(modelItem => item.Email)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
                                         <td>@Html.DisplayFor(modelItem => item.Age) </td>
                                         <td>
                                             <a onclick="confirmDelete('@item.Id')" class="btn btn-danger">Delete</a>

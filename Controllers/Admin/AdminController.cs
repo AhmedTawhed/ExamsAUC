@@ -1,13 +1,9 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using MVCExamProject.Models;
-using MVCExamProject.Repository;
 using MVCExamProject.Repository.Interfaces;
 using System.Security.Claims;
-using System.Linq;
-using Microsoft.AspNetCore.Authentication;
-using System.Configuration;
 
 namespace MVCExamProject.Controllers.Admin
 {
@@ -29,7 +25,7 @@ namespace MVCExamProject.Controllers.Admin
         public IActionResult Login(User user)
 
         {
-            if (adminService.Find(user.Email, user.Password ))
+            if (adminService.Find(user.Email, user.Password))
             {
                 User admin = adminService.GetAdmin(user.Email, user.Password);
                 if (admin.IsAdmin == true)
@@ -53,13 +49,7 @@ namespace MVCExamProject.Controllers.Admin
         public IActionResult SignOut()
         {
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
-
-
-
-
-
-
     }
 }

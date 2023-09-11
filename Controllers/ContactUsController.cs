@@ -23,7 +23,7 @@ namespace MVCExamProject.Controllers
 		[HttpPost]
 		public IActionResult Index(ContactUs contact)
 		{
-			if (ModelState.IsValid == true)
+			if (ModelState.IsValid)
 			{
 				contactUsRepository.Insert(contact);
 				TempData["SuccessMessage"] = "Message Sent successfully.";

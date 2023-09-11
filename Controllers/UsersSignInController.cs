@@ -42,9 +42,7 @@ namespace MVCExamProject.Controllers
                 userRepository.Insert(userdata);
                 userRepository.Save();
 
-                // create cookie
-                ClaimsIdentity claims =
-                    new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+                ClaimsIdentity claims = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
                 claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, userdata.Id.ToString()));
                 claims.AddClaim(new Claim(ClaimTypes.Email, userdata.Email));
                 claims.AddClaim(new Claim(ClaimTypes.Name, userdata.Name));
@@ -69,15 +67,13 @@ namespace MVCExamProject.Controllers
             if (userRepository.Find(user.Email, user.Password))
             {
                
-
                 User UserAccount = userRepository.GetUserByEmailAndPassword(user.Email, user.Password);
 
                 if (UserAccount.IsAdmin == true)
                 {
                     return RedirectToAction("login", "Admin");
                 }
-                ClaimsIdentity claims =
-                    new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+                ClaimsIdentity claims = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
                 claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, UserAccount.Id.ToString()));
                 claims.AddClaim(new Claim(ClaimTypes.Email, UserAccount.Email));
                 claims.AddClaim(new Claim(ClaimTypes.Name, UserAccount.Name));
@@ -91,10 +87,6 @@ namespace MVCExamProject.Controllers
             }
             return View(user);
         }
-
-
-
-
         public async Task<IActionResult> Logout()
         {
 

@@ -49,8 +49,7 @@ namespace MVCExamProject.Repository
                 options.AddRange(option);
             }
 
-            return options;
-           
+            return options;   
         }
 
         public int GetIdByTitle(string title)
@@ -58,14 +57,6 @@ namespace MVCExamProject.Repository
             var questionOption = context.QuestionOptions.FirstOrDefault(q => q.Title == title);
             return questionOption?.Id ?? 0;
         }
-
-
-
-
-
-
-
-
         public void SaveChanges()
         {
             context.SaveChanges();
